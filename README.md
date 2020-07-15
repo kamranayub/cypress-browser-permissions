@@ -1,106 +1,78 @@
-# template-typescript-package
+# cypress-browser-permissions
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kamranayub/template-typescript-package.svg)
-![GitHub repo size](https://img.shields.io/github/repo-size/kamranayub/template-typescript-package.svg)
-![npm](https://img.shields.io/npm/dw/template-typescript-package.svg)
-![npm](https://img.shields.io/npm/dm/template-typescript-package.svg)
-![npm](https://img.shields.io/npm/dy/template-typescript-package.svg)
-![npm](https://img.shields.io/npm/dt/template-typescript-package.svg)
-![NPM](https://img.shields.io/npm/l/template-typescript-package.svg)
-![npm](https://img.shields.io/npm/v/template-typescript-package.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/kamranayub/template-typescript-package.svg)
-![npm collaborators](https://img.shields.io/npm/collaborators/template-typescript-package.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kamranayub/cypress-browser-permissions.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/kamranayub/cypress-browser-permissions.svg)
+![npm](https://img.shields.io/npm/dw/cypress-browser-permissions.svg)
+![npm](https://img.shields.io/npm/dm/cypress-browser-permissions.svg)
+![npm](https://img.shields.io/npm/dy/cypress-browser-permissions.svg)
+![npm](https://img.shields.io/npm/dt/cypress-browser-permissions.svg)
+![NPM](https://img.shields.io/npm/l/cypress-browser-permissions.svg)
+![npm](https://img.shields.io/npm/v/cypress-browser-permissions.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/kamranayub/cypress-browser-permissions.svg)
+![npm collaborators](https://img.shields.io/npm/collaborators/cypress-browser-permissions.svg)
 
-A boilerplate repo for publishing typescript packages to npm
+A Cypress plugin to manage browser launch permissions for various APIs such as Notifications, Geolocation, Cookies, and more.
 
 ## Usage
 
-Some notes on how to use this repo. Some day I'll hopefully automate the biggest part of this.
+### Install the package
 
-### Clone the repo or [generate](https://github.com/kamranayub/template-typescript-package/generate) your repo:
+#### npm
 
-```shell script
-npx degit https://github.com/kamranayub/template-typescript-package my-new-package
+```bash
+npm i cypress-browser-permissions --save-dev
 ```
 
-### Initialize the new project
+#### yarn
 
-
-```shell script
-cd my-new-package
-yarn # to install the deps
-git init # to initialize a new Git repo
-# Manually create a remote repo and follow the instructions OR:
-hub create # Use this amazing tool called 'hub': https://github.com/github/hub
+```bash
+yarn install cypress-browser-permissions --save-dev
 ```
 
-#### Update meta data:
+#### Import and initialize the plugin
 
-Update the following fields in `package.json`:
+In `cypress/plugins/index.js`:
 
-- name
-- description
-- repository
-- keywords
-- author
-- license
-- bugs
-- homepage
+```js
+const initializeBrowserPermissionsPlugin = require('cypress-browser-permissions/plugin');
 
-Make sure to don't change the `version` property, versioning this package is handled by `semantic-release`!
-
-#### Update README
-
-Basically you want to search/replace the repo and package name to match your repo/package name and add any new info.
-
-### Getting the GitHub and NPM tokens
-
-#### GitHub
-
-- Log in to GitHub.
-- Navigate to [https://github.com/settings/tokens](https://github.com/settings/tokens).
-- Click `Generate new token`.
-- Fill in the `note` field so you remember what the token is for.
-- Select the `write:packages` scope. This will also enable the `repo` and `read:packages` scopes.
-- Click `Generate token`.
-- Copy the code and store it to use in the next step.
-
-#### NPM
-
-- Log in to NPM.
-- Click the Tokens link from the top-right menu.
-- Click Create New Token
-- Select `Read and Publish` then click `Create Token`.
-- Copy the code and store it to use in the next step.
-
-### Setting the GitHub and NPM tokens
-
-- Open your new repo on GitHub.
-- Navigate to `Settings` then `Secrets`.
-- Click `Add a new secret`.
-- Add the `GH_TOKEN` secret with the GitHub token.
-- Click `Add a new secret` again.
-- Add the `NPM_TOKEN` secret with the NPM token.
-
-Your repo is now set up to publish packages to NPM and the GitHub Package Registry.
-
-### Write your code
-
-Write your amazing new code and make sure to update the tests!
-
-You can run `yarn lint` and `yarn test` to check if your project will pass CI.
-
-### Publish it
-
-With a `git push` you will create a new version and publish it to `npm`.
-
-```shell script
-git commit -m "feat: initial commit"
-git push origin master 
+module.exports = (on, config) => {
+    initializeBrowserPermissionsPlugin(on, config);
+};
 ```
+
+#### Set your desired permissions
+
+Setting permissions should work in Chrome, Edge (Chromium), and Firefox. They won't take effect in Electron or other browsers.
+
+In `cypress.json` or `cypress.env.json`, you can use Cypress environment variables to control permissions:
+
+```js
+{
+    "env": {
+        "plugin_permissions_notifications": "allow",
+        "plugin_permissions_geolocation": "block",
+        "plugin_permissions_images": "ask",
+    }
+}
+```
+
+Values can be any of the following:
+
+- `0` or `ask` - The default permission, which is to prompt the user
+- `1` or `allow` - Allow the permission
+- `2` or `block` - Block the permission
+
+## Supported Permissions
+
+### Chrome
+
+- `notifications`
+- `geolocation`
 
 ## Credits
 
-Forked from [template-typescript-package](https://github.com/beeman/template-typescript-package) with a few changes.
 
 ## MIT License
+
+See [LICENSE](LICENSE)
