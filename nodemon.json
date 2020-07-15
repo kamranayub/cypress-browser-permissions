@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "types", "@types"],
+  "ext": "ts",
+  "exec": "yarn watch && npm link"
+}
