@@ -13,6 +13,8 @@
 
 A Cypress plugin to manage browser launch permissions for various APIs such as Notifications, Geolocation, Cookies, Images, and more.
 
+![Example of enabling permissions](https://user-images.githubusercontent.com/563819/87628826-63b13100-c6f7-11ea-956a-ca84a137d464.png)
+
 These APIs can be controlled using profile preferences which this plugin will generate and pass for you, as well as resetting them for each test run (otherwise they will be persisted).
 
 ## Usage
@@ -36,7 +38,7 @@ yarn install cypress-browser-permissions --save-dev
 In `cypress/plugins/index.js`:
 
 ```js
-const initializeBrowserPermissionsPlugin = require('cypress-browser-permissions/plugin')
+import initializeBrowserPermissionsPlugin from 'cypress-browser-permissions/plugin'
 
 module.exports = (on, config) => {
   initializeBrowserPermissionsPlugin(on, config)
