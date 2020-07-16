@@ -2,8 +2,8 @@
   "name": "cypress-browser-permissions",
   "version": "0.0.0-development",
   "description": "A Cypress plugin package to handle setting common browser permissions like notifications, geolocation, images, and more",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
     "test": "jest",
@@ -12,7 +12,8 @@
     "watch": "tsc -w",
     "start": "npm link && nodemon",
     "semantic-release": "semantic-release",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "postpublish": "cp -r dist/package.json . && cp -r dist/npm-shrinkwrap.json ."
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,7 @@
     "dist/**/*"
   ],
   "dependencies": {
+    "@semantic-release/changelog": "^5.0.1",
     "lodash": "^4.17.19"
   },
   "peerDependencies": {
