@@ -11,6 +11,7 @@ module.exports = {
       statements: 70,
     },
   },
+  testPathIgnorePatterns: ["/node_modules/", "/cypress/"],
   testEnvironment: 'node',
   preset: 'ts-jest',
   globals: {

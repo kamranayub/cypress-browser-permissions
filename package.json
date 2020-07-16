@@ -8,6 +8,8 @@
     "lint": "eslint \"./src/**/*.{js,ts,tsx}\"",
     "test": "jest",
     "test:watch": "jest --watchAll",
+    "cypress": "cypress open",
+    "cypress:run": "cypress run",
     "build": "tsc",
     "watch": "tsc -w",
     "start": "npm link && nodemon",

@@ -1,0 +1,7 @@
+{
+    "env": {
+        "browserPermissions": {
+            "notifications": "allow"
+        }
+    }
+}

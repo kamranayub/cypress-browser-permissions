@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cypress Notification Test</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const n = new window.Notification('test', { body: 'This is a test!' })
+        n.addEventListener('show', (e) => {
+            window.__CypressNotificationShown = e;
+        })
+    </script>
+</body>
+</html>
