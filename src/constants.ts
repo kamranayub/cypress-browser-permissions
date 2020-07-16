@@ -1,6 +1,6 @@
 import { BrowserPermissions } from './types'
 
-export const PLUGIN_ENV_PREFIX = 'browser_permissions_'
+export const PLUGIN_ENV_VAR = 'browserPermissions'
 
 export const PREFERENCES_ROOT_PATH_BY_FAMILY: Record<Cypress.BrowserFamily, string> = {
   chromium: 'preferences.default.',

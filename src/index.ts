@@ -1,14 +1,14 @@
-import { PLUGIN_ENV_PREFIX } from './constants'
+import { PLUGIN_ENV_VAR } from './constants'
 import { BrowserPermissions, PermissionState } from './types'
 import { toPermissionState } from './helpers'
 
 type PermissionKey = keyof BrowserPermissions
 
 export function getBrowserPermission(permission: PermissionKey) {
-  const permissionValue = Cypress.env(`${PLUGIN_ENV_PREFIX}${permission}`)
+  const permissions = Cypress.env(PLUGIN_ENV_VAR)
 
-  if (permissionValue) {
-    return toPermissionState(permissionValue)
+  if (permissions && typeof permissions[permission] !== 'undefined') {
+    return toPermissionState(permissions[permission])
   } else {
     return undefined
   }

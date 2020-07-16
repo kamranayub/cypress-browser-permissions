@@ -17,8 +17,11 @@ describe('plugin', () => {
         it('should handle "allow" permissions', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
-              browser_permissions_notifications: 'allow',
-              browser_permissions_geolocation: '1',
+              browserPermissions: {
+                notifications: 'allow',
+                geolocation: '1',
+                images: 1,
+              },
             },
           })
 
@@ -26,13 +29,17 @@ describe('plugin', () => {
 
           expectPermissionState(launchOptions, 'notifications').toBe(PermissionState.allow)
           expectPermissionState(launchOptions, 'geolocation').toBe(PermissionState.allow)
+          expectPermissionState(launchOptions, 'images').toBe(PermissionState.allow)
         })
 
         it('should handle "block" permissions', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
-              browser_permissions_notifications: 'block',
-              browser_permissions_geolocation: '2',
+              browserPermissions: {
+                notifications: 'block',
+                geolocation: '2',
+                images: 2,
+              },
             },
           })
 
@@ -40,13 +47,17 @@ describe('plugin', () => {
 
           expectPermissionState(launchOptions, 'notifications').toBe(PermissionState.block)
           expectPermissionState(launchOptions, 'geolocation').toBe(PermissionState.block)
+          expectPermissionState(launchOptions, 'images').toBe(PermissionState.block)
         })
 
         it('should handle "ask" permissions', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
-              browser_permissions_notifications: 'ask',
-              browser_permissions_geolocation: '0',
+              browserPermissions: {
+                notifications: 'ask',
+                geolocation: '0',
+                images: 0,
+              },
             },
           })
 
@@ -54,12 +65,15 @@ describe('plugin', () => {
 
           expectPermissionState(launchOptions, 'notifications').toBe(PermissionState.ask)
           expectPermissionState(launchOptions, 'geolocation').toBe(PermissionState.ask)
+          expectPermissionState(launchOptions, 'images').toBe(PermissionState.ask)
         })
 
         it('should unset existing permissions if different ones are provided', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
-              browser_permissions_notifications: 'allow',
+              browserPermissions: {
+                notifications: 'allow',
+              },
             },
           })
 

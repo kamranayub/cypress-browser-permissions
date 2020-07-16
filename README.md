@@ -47,23 +47,23 @@ module.exports = (on, config) => {
 
 ## Setting Permissions
 
-Setting permissions should work in Chrome, Edge (Chromium), and Firefox. They won't take effect in Electron or other browsers.
+Setting permissions should work in Chromium (Google Chrome, Microsoft Edge Chromium) and Firefox. They won't take effect in other browser families.
 
-Permission environment variables should begin with `plugin_permissions_` and then can be followed by any of the supported permissions listed below.
-
-> **Remember:** When passing Cypress env vars from the outside, such as from a script, prefix them with `CYPRESS_` e.g. `CYPRESS_plugin_permissions_notifications=allow`.
+Permissions cam be set using [Cypress environment variables](https://docs.cypress.io/guides/guides/environment-variables.html). The plugin reads permissions from `Cypress.env.browserPermissions` and supports all the existing ways to set Cypress environment variables.
 
 ### In `cypress.json`
 
-In `cypress.json`, you can use Cypress environment variables to control permissions:
+In `cypress.json`, set the `env.browserPermissions` property with a map of permissions:
 
-```js
+```json
 {
-    "env": {
-        "plugin_permissions_notifications": "allow",
-        "plugin_permissions_geolocation": "block",
-        "plugin_permissions_images": "ask",
+  "env": {
+    "browserPermissions": {
+      "notifications": "allow",
+      "geolocation": "block",
+      "images": "ask"
     }
+  }
 }
 ```
 
@@ -71,26 +71,34 @@ In `cypress.json`, you can use Cypress environment variables to control permissi
 
 In `cypress.env.json`, it follows the same convention:
 
-```js
+```json
 {
-    "plugin_permissions_notifications": "allow",
-    "plugin_permissions_geolocation": "block",
-    "plugin_permissions_images": "ask",
+  "browserPermissions": {
+    "notifications": "allow",
+    "geolocation": "block",
+    "images": "ask"
+  }
 }
 ```
 
 ### Via `cypress open` or `cypress run`
 
+Since the configuration is nested, you must pass in the permissions as a stringified JSON object:
+
 ```bash
-$ cypress run --env plugin_permissions_notifications=allow
-$ cypress open --env plugin_permissions_notifications=allow
+$ cypress run  --env '{\"browserPermissions\": {\"notifications\": 1}}'
+$ cypress open --env '{\"browserPermissions\": {\"notifications\": 1}}'
 ```
 
 ### Via machine environment variables
 
+By default, Cypress cannot handle nested variable objects but this plugin will correctly find environment variables that match what it expects and will translate them properly for you automatically:
+
 ```bash
-CYPRESS_plugin_permissions_notifications=allow cypress run
+CYPRESS_browser_permissions_notifications=allow cypress run
 ```
+
+> **Remember:** When passing Cypress env vars from the outside, such as from a script, prefix them with `CYPRESS_` e.g. `CYPRESS_browser_permissions_notifications=allow`. Cypress automatically strips the prefix when passing to `Cypress.env`
 
 ### Supported Permissions
 

@@ -1,24 +1,20 @@
 import { isNumber, toNumber, chain, toLower } from 'lodash'
 import { PermissionState, BrowserPermissions } from './types'
 import {
-  PLUGIN_ENV_PREFIX,
   PREFERENCES_ROOT_PATH_BY_FAMILY,
   PERMISSIONS_PREF_NAME_BY_FAMILY,
   PERMISSIONS_PREF_CONTAINER_BY_FAMILY,
+  PLUGIN_ENV_VAR,
 } from './constants'
 
-function isBrowserPermissionVar(_value: string, key: string) {
-  return key.startsWith(PLUGIN_ENV_PREFIX)
-}
-
-export function toPermissionState(value: string): PermissionState {
+export function toPermissionState(value: any): PermissionState {
   const maybeNumber = toNumber(value)
 
   if (isNumber(maybeNumber) && maybeNumber >= 0 && maybeNumber <= 2) {
     return maybeNumber
   }
 
-  const lowerValue = value.toLowerCase()
+  const lowerValue = String(value).toLowerCase()
 
   if (lowerValue === 'allow') {
     return PermissionState.allow
@@ -31,11 +27,9 @@ export function toPermissionState(value: string): PermissionState {
   }
 }
 
-export function getBrowserPermissionsFromEnv(env: Record<string, any>) {
-  const permissionsRecord: unknown = chain(env)
+export function getBrowserPermissionsFromEnv(env: { browserPermissions?: Record<string, any> }) {
+  const permissionsRecord: unknown = chain(env[PLUGIN_ENV_VAR])
     .mapKeys((_, key) => toLower(key))
-    .pickBy(isBrowserPermissionVar)
-    .mapKeys((_, key) => key.replace(PLUGIN_ENV_PREFIX, ''))
     .mapValues((value) => toPermissionState(value))
     .value()
 
