@@ -1,5 +1,5 @@
 import { get, forOwn, set } from 'lodash'
-import { onBeforeBrowserLaunch } from '../plugin'
+import { onBeforeBrowserLaunch, modifyAndTransformPluginEnv } from '../plugin'
 import { PermissionState } from '../types'
 import { getBrowserLaunchOptionsPermissionsPath, getBrowserLaunchOptionsPermissionsContainerPath } from '../helpers'
 import { PREFERENCES_ROOT_PATH_BY_FAMILY } from '../constants'
@@ -7,6 +7,70 @@ import { PREFERENCES_ROOT_PATH_BY_FAMILY } from '../constants'
 const EMPTY_LAUNCH_OPTIONS = {} as Cypress.BrowserLaunchOptions
 
 describe('plugin', () => {
+  describe('modifyAndTransformPluginEnv', () => {
+    it('should transform camelCase overrides', () => {
+      const config = {
+        env: {
+          browserPermissionsNotifications: 'allow',
+        },
+      }
+      modifyAndTransformPluginEnv(config)
+      expect(config).toEqual({
+        env: {
+          browserPermissions: {
+            notifications: 'allow',
+          },
+        },
+      })
+    })
+
+    it('should transform snake_case overrides', () => {
+      const config = {
+        env: {
+          browser_permissions_notifications: 'allow',
+        },
+      }
+      modifyAndTransformPluginEnv(config)
+      expect(config).toEqual({
+        env: {
+          browserPermissions: {
+            notifications: 'allow',
+          },
+        },
+      })
+    })
+
+    it('should merge existing permissions if they exist', () => {
+      const config = {
+        env: {
+          browserPermissions: {
+            geolocation: 'block',
+          },
+          browserPermissionsNotifications: 'allow',
+        },
+      }
+      modifyAndTransformPluginEnv(config)
+      expect(config).toEqual({
+        env: {
+          browserPermissions: {
+            geolocation: 'block',
+            notifications: 'allow',
+          },
+        },
+      })
+    })
+
+    it('should unset original keys', () => {
+      const config = {
+        env: {
+          browserPermissionsNotifications: 'allow',
+        },
+      }
+      modifyAndTransformPluginEnv(config)
+      expect(config.env.browserPermissionsNotifications).toBeUndefined()
+    })
+  })
+
   describe('onBeforeBrowserLaunch', () => {
     forOwn(PREFERENCES_ROOT_PATH_BY_FAMILY, (_, browserFamily: Cypress.BrowserFamily) => {
       describe(`for browser family ${browserFamily}`, () => {
