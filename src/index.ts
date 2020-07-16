@@ -5,7 +5,7 @@ import { toPermissionState } from './helpers'
 type PermissionKey = keyof BrowserPermissions
 
 export function getBrowserPermission(permission: PermissionKey) {
-  const permissionValue = Cypress.env(`${PLUGIN_ENV_PREFIX}_${permission}`)
+  const permissionValue = Cypress.env(`${PLUGIN_ENV_PREFIX}${permission}`)
 
   if (permissionValue) {
     return toPermissionState(permissionValue)
@@ -22,7 +22,7 @@ export function isPermissionBlocked(permission: PermissionKey) {
   return getBrowserPermission(permission) === PermissionState.block
 }
 
-export function isPermissionPrompt(permission: PermissionKey) {
+export function isPermissionAsk(permission: PermissionKey) {
   return getBrowserPermission(permission) === PermissionState.ask
 }
 

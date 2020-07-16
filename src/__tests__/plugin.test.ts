@@ -18,36 +18,42 @@ describe('plugin', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
               browser_permissions_notifications: 'allow',
+              browser_permissions_geolocation: '1',
             },
           })
 
           const launchOptions = handle({ family: browserFamily }, EMPTY_LAUNCH_OPTIONS)
 
           expectPermissionState(launchOptions, 'notifications').toBe(PermissionState.allow)
+          expectPermissionState(launchOptions, 'geolocation').toBe(PermissionState.allow)
         })
 
         it('should handle "block" permissions', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
               browser_permissions_notifications: 'block',
+              browser_permissions_geolocation: '2',
             },
           })
 
           const launchOptions = handle({ family: browserFamily }, EMPTY_LAUNCH_OPTIONS)
 
           expectPermissionState(launchOptions, 'notifications').toBe(PermissionState.block)
+          expectPermissionState(launchOptions, 'geolocation').toBe(PermissionState.block)
         })
 
         it('should handle "ask" permissions', () => {
           const handle = onBeforeBrowserLaunch({
             env: {
               browser_permissions_notifications: 'ask',
+              browser_permissions_geolocation: '0',
             },
           })
 
           const launchOptions = handle({ family: browserFamily }, EMPTY_LAUNCH_OPTIONS)
 
           expectPermissionState(launchOptions, 'notifications').toBe(PermissionState.ask)
+          expectPermissionState(launchOptions, 'geolocation').toBe(PermissionState.ask)
         })
 
         it('should unset existing permissions if different ones are provided', () => {
