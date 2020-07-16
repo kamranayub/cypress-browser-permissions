@@ -62,5 +62,8 @@
   ],
   "dependencies": {
     "lodash": "^4.17.19"
+  },
+  "peerDependencies": {
+    "cypress": "4.x"
   }
 }

@@ -4,7 +4,8 @@
     "strict": false,
     "strictNullChecks": false,
     "strictFunctionTypes": false,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "types": ["node", "jest", "cypress"]
   },
   "include": ["**/*.ts"],
   "exclude": []
