@@ -121,6 +121,41 @@ Values for a permission can be any of the following:
 - `1` or `allow` - Allow the permission
 - `2` or `block` - Block the permission
 
+## API
+
+In your Cypress test suites, you can import permissions helpers from the the package.
+
+### Usage Example
+
+**my-test.spec.js**
+
+```js
+import { isPermissionAllowed, isPermissionBlocked, isPermissionAsk } from 'cypress-browser-permissions'
+
+describe('my site', () => {
+  before(() => cy.visit('/'))
+
+  isPermissionAllowed('notifications') &&
+    it('should show desktop notification', () => {
+      /* ... */
+    })
+
+  isPermissionBlocked('notifications') &&
+    it('should warn user desktop notifications are disabled', () => {
+      /* ... */
+    })
+
+  isPermissionAsk('notifications') &&
+    it('should prompt user to allow desktop notifications', () => {
+      /* ... */
+    })
+})
+```
+
+### Docs
+
+See [API docs](https://kamranicus.com/cypress-browser-permissions)
+
 ## Resetting Permissions
 
 This plugin automatically resets each supported permission to the browser default for each test run since otherwise profile preferences are persisted across sessions, which may not be what you intend.
@@ -153,3 +188,7 @@ In Web Driver testing, these are passed under capabilities, such as [shown in th
 ## MIT License
 
 See [LICENSE](LICENSE)
+
+```
+
+```

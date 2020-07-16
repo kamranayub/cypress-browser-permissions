@@ -65,6 +65,9 @@ typings/
 # npm build output
 /dist
 
+# typedoc build output
+/docs
+
 .sonarlint/
 
 .idea/
