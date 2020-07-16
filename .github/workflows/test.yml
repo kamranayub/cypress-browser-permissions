@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - uses: actions/setup-node@v1
@@ -25,3 +25,29 @@ jobs:
       - run: yarn lint
       - run: yarn build
       - run: yarn test
+
+  chrome:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Run all Cypress tests
+      - name: Tests on Chrome
+        uses: cypress-io/github-action@v1
+        with:
+          browser: chrome
+
+      # Upload artifacts
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
