@@ -1,7 +1,7 @@
 {
-  "name": "template-typescript-package",
+  "name": "cypress-browser-permissions",
   "version": "0.0.0-development",
-  "description": "A boilerplate repo for publishing typescript packages to npm",
+  "description": "A Cypress plugin package to handle setting common browser permissions like notifications, geolocation, images, and more",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kamranayub/template-typescript-package.git"
+    "url": "https://github.com/kamranayub/cypress-browser-permissions.git"
   },
   "keywords": [
     "TypeScript",
@@ -28,9 +28,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kamranayub/template-typescript-package/issues"
+    "url": "https://github.com/kamranayub/cypress-browser-permissions/issues"
   },
-  "homepage": "https://github.com/kamranayub/template-typescript-package#readme",
+  "homepage": "https://github.com/kamranayub/cypress-browser-permissions#readme",
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint --fix && npm test",
