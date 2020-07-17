@@ -32,9 +32,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn
       - run: yarn docs
-      - run: npx gh-pages -d docs
-        env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
 
   # Uncomment if you want to publish to GitHub Package Repository
   #
