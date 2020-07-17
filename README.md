@@ -37,7 +37,7 @@ npm i cypress-browser-permissions --save-dev
 yarn install cypress-browser-permissions --save-dev
 ```
 
-#### Import and initialize the plugin
+### Import and initialize the plugin
 
 In `cypress/plugins/index.js`:
 
@@ -77,7 +77,7 @@ module.exports = (on, config) => {
 }
 ```
 
-## Setting Permissions
+### Setting Permissions
 
 Setting permissions should work in Chromium (Google Chrome, Microsoft Edge Chromium) and Firefox. They won't take effect in other browser families.
 
@@ -107,7 +107,7 @@ In `cypress.json`, set the `env.browserPermissions` property with a map of permi
 }
 ```
 
-### In `cypress.env.json`
+#### In `cypress.env.json`
 
 In `cypress.env.json`, it follows the same convention:
 
@@ -127,7 +127,7 @@ In `cypress.env.json`, it follows the same convention:
 }
 ```
 
-### Via `cypress open` or `cypress run`
+#### Via `cypress open` or `cypress run`
 
 Since the configuration is nested, you must pass in the permissions as a stringified JSON object:
 
@@ -136,7 +136,7 @@ $ cypress run  --env '{\"browserPermissions\": {\"notifications\": 1}}'
 $ cypress open --env '{\"browserPermissions\": {\"notifications\": 1}}'
 ```
 
-### Via machine environment variables
+#### Via machine environment variables
 
 By default, Cypress cannot handle nested variable objects but this plugin will correctly find environment variables that match what it expects and will translate them properly for you automatically:
 
@@ -146,11 +146,11 @@ CYPRESS_browser_permissions_notifications=allow cypress run
 
 > **Remember:** When passing Cypress env vars from the outside, such as from a script, prefix them with `CYPRESS_` e.g. `CYPRESS_browser_permissions_notifications=allow`. Cypress automatically strips the prefix when passing to `Cypress.env`
 
-### Supported Permissions
+#### Supported Permissions
 
 These are the supported permission names of the plugin:
 
-#### Chrome / Edge (Chromium)
+##### Chrome / Edge (Chromium)
 
 - `notifications`
 - `geolocation`
@@ -162,7 +162,7 @@ These are the supported permission names of the plugin:
 - `cookies`
 - `plugins`
 
-#### Firefox
+##### Firefox
 
 - `notifications`
 - `geolocation`
@@ -178,11 +178,11 @@ Values for a permission can be any of the following:
 - `1` or `allow` - Allow the permission
 - `2` or `block` - Block the permission
 
-## API
+### Checking Permissions
 
 In your Cypress test suites, you can import permissions helpers from the the package.
 
-### Usage Example
+#### Usage Example
 
 **my-test.spec.js**
 
@@ -211,9 +211,9 @@ describe('my site', () => {
 
 Also see [cypress/integration/](cypress/integration) folder for e2e examples.
 
-### Docs
+## API Reference
 
-See [API docs](https://kamranicus.com/cypress-browser-permissions/modules/_index_.html) for documented methods.
+See [API reference](https://kamranicus.com/cypress-browser-permissions/modules/_index_.html) for documented methods.
 
 ## Resetting Permissions
 
