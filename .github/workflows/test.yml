@@ -1,4 +1,4 @@
-name: Node.js Package Lint And Test
+name: Tests
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   lint-and-test:
-    name: Test on node 12 and ubuntu-latest
+    name: Node 12
     runs-on: ubuntu-latest
 
     steps:
@@ -27,26 +27,62 @@ jobs:
       - run: yarn test
 
   chrome:
+    name: Chrome
     runs-on: ubuntu-16.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      # Run all Cypress tests
-      - name: Tests on Chrome
-        uses: cypress-io/github-action@v1
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v1
         with:
           browser: chrome
           build: yarn build
-
-      # Upload artifacts
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-          
-      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+  
+  edge:
+    name: Edge
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: edge
+          build: yarn build
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+  firefox:
+    name: Firefox
+    runs-on: ubuntu-16.04
+    container:
+      image: cypress/browsers:node12.14.1-chrome83-ff77
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: firefox
+          build: yarn build
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
       - uses: actions/upload-artifact@v1
         if: always()
         with:
