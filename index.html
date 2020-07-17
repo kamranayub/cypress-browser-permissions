@@ -81,6 +81,50 @@
 				<p><img src="https://user-images.githubusercontent.com/563819/87746293-d254c400-c7b5-11ea-9d22-d5613b9dae47.gif" alt="Video of notification being displayed"></p>
 				<p>These APIs can be controlled using browser profile preferences which this plugin will generate and pass for you, as well as resetting them for each test run (otherwise they will be persisted).</p>
 				<p>This enables you to effectively test permissions-based APIs in continuous integration environments and in headed browsers <em>without prompts.</em> :tada:</p>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of Contents</h2>
+				</a>
+				<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+				<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+				<ul>
+					<li><a href="#usage">Usage</a><ul>
+							<li><a href="#install-the-package">Install the package</a><ul>
+									<li><a href="#npm">npm</a></li>
+									<li><a href="#yarn">yarn</a></li>
+								</ul>
+							</li>
+							<li><a href="#import-and-initialize-the-plugin">Import and initialize the plugin</a></li>
+							<li><a href="#setting-permissions">Setting Permissions</a></li>
+							<li><a href="#in-cypressjson">In <code>cypress.json</code></a><ul>
+									<li><a href="#in-cypressenvjson">In <code>cypress.env.json</code></a></li>
+									<li><a href="#via-cypress-open-or-cypress-run">Via <code>cypress open</code> or <code>cypress run</code></a></li>
+									<li><a href="#via-machine-environment-variables">Via machine environment variables</a></li>
+									<li><a href="#supported-permissions">Supported Permissions</a><ul>
+											<li><a href="#chrome--edge-chromium">Chrome / Edge (Chromium)</a></li>
+											<li><a href="#firefox">Firefox</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#supported-values">Supported Values</a></li>
+							<li><a href="#checking-permissions">Checking Permissions</a><ul>
+									<li><a href="#usage-example">Usage Example</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="#api-reference">API Reference</a></li>
+					<li><a href="#resetting-permissions">Resetting Permissions</a></li>
+					<li><a href="#details">Details</a><ul>
+							<li><a href="#how-it-works">How It Works</a></li>
+							<li><a href="#chrome--edge--chromium-preferences">Chrome / Edge / Chromium Preferences</a></li>
+							<li><a href="#firefox-1">Firefox</a></li>
+						</ul>
+					</li>
+					<li><a href="#credits">Credits</a></li>
+					<li><a href="#mit-license">MIT License</a></li>
+				</ul>
+				<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
