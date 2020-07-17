@@ -15,7 +15,7 @@
     "start": "npm link && nodemon",
     "semantic-release": "semantic-release",
     "docs": "typedoc",
-    "prepare": "npx copyfiles -s package.json README.md CHANGELOG.md LICENSE dist/"
+    "prepublishOnly": "npx copyfiles -s package.json README.md CHANGELOG.md LICENSE dist/"
   },
   "repository": {
     "type": "git",
