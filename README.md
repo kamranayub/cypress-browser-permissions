@@ -21,6 +21,8 @@ This enables you to effectively test permissions-based APIs in continuous integr
 
 ## Usage
 
+> :wave: Read the [dev.to introduction post for a quick start guide and an example](https://dev.to/kamranayub/controlling-browser-permissions-in-cypress-end-to-end-tests-5d7b)!
+
 ### Install the package
 
 #### npm
