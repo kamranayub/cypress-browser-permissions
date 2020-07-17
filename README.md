@@ -19,8 +19,38 @@ These APIs can be controlled using browser profile preferences which this plugin
 
 This enables you to effectively test permissions-based APIs in continuous integration environments and in headed browsers _without prompts._ :tada:
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Usage](#usage)
+  - [Install the package](#install-the-package)
+    - [npm](#npm)
+    - [yarn](#yarn)
+  - [Import and initialize the plugin](#import-and-initialize-the-plugin)
+  - [Setting Permissions](#setting-permissions)
+  - [In `cypress.json`](#in-cypressjson)
+    - [In `cypress.env.json`](#in-cypressenvjson)
+    - [Via `cypress open` or `cypress run`](#via-cypress-open-or-cypress-run)
+    - [Via machine environment variables](#via-machine-environment-variables)
+    - [Supported Permissions](#supported-permissions)
+      - [Chrome / Edge (Chromium)](#chrome--edge-chromium)
+      - [Firefox](#firefox)
+  - [Supported Values](#supported-values)
+  - [Checking Permissions](#checking-permissions)
+    - [Usage Example](#usage-example)
+- [API Reference](#api-reference)
+- [Resetting Permissions](#resetting-permissions)
+- [Details](#details)
+  - [How It Works](#how-it-works)
+  - [Chrome / Edge / Chromium Preferences](#chrome--edge--chromium-preferences)
+  - [Firefox](#firefox-1)
+- [Credits](#credits)
+- [MIT License](#mit-license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Usage
 
