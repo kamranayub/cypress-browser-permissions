@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   testPathIgnorePatterns: ["/node_modules/", "/cypress/"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testEnvironment: 'node',
   preset: 'ts-jest',
   globals: {
