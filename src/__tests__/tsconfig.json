@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "strict": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "types": ["node", "jest", "cypress"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": []
+}

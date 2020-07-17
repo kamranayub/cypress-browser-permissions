@@ -1,0 +1,15 @@
+{
+    "env": {
+        "browserPermissions": {
+            "notifications": "allow",
+            "geolocation": "allow",
+            "camera": "allow",
+            "microphone": "allow",
+            "images": "allow",
+            "javascript": "allow",
+            "popups": "allow",
+            "plugins": "allow",
+            "cookies": "allow"
+        }
+    }
+}
