@@ -19,6 +19,9 @@ These APIs can be controlled using browser profile preferences which this plugin
 
 This enables you to effectively test permissions-based APIs in continuous integration environments and in headed browsers _without prompts._ :tada:
 
+<!-- START doctoc -->
+<!-- END doctoc -->
+
 ## Usage
 
 > :wave: Read the [dev.to introduction post for a quick start guide and an example](https://dev.to/kamranayub/controlling-browser-permissions-in-cypress-end-to-end-tests-5d7b)!
