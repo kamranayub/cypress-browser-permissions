@@ -13,7 +13,7 @@
 
 A Cypress plugin to manage browser launch permissions for various APIs such as Notifications, Geolocation, Cookies, Images, and more.
 
-![Example of enabling permissions](https://user-images.githubusercontent.com/563819/87628826-63b13100-c6f7-11ea-956a-ca84a137d464.png)
+![Video of notification being displayed](https://user-images.githubusercontent.com/563819/87746293-d254c400-c7b5-11ea-9d22-d5613b9dae47.gif)
 
 These APIs can be controlled using browser profile preferences which this plugin will generate and pass for you, as well as resetting them for each test run (otherwise they will be persisted).
 
@@ -82,6 +82,8 @@ module.exports = (on, config) => {
 Setting permissions should work in Chromium (Google Chrome, Microsoft Edge Chromium) and Firefox. They won't take effect in other browser families.
 
 Permissions cam be set using [Cypress environment variables](https://docs.cypress.io/guides/guides/environment-variables.html). The plugin reads permissions from `Cypress.env.browserPermissions` and supports all the existing ways to set Cypress environment variables.
+
+![Example of enabling permissions](https://user-images.githubusercontent.com/563819/87628826-63b13100-c6f7-11ea-956a-ca84a137d464.png)
 
 ### In `cypress.json`
 
