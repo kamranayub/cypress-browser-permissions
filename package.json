@@ -15,7 +15,7 @@
     "start": "npm link && nodemon",
     "semantic-release": "semantic-release",
     "docs": "typedoc",
-    "postpublish": "cp -r dist/package.json . && cp -r dist/npm-shrinkwrap.json ."
+    "prepublish": "npx shx cp package.json dist/"
   },
   "repository": {
     "type": "git",
