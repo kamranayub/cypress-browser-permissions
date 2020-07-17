@@ -66,7 +66,7 @@ export function modifyAndTransformPluginEnv({ env }: Pick<Cypress.PluginConfigOp
   keys(envOverrides).forEach((key) => unset(env, key))
 }
 
-export default function cypressBrowserPreferences(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
+export function cypressBrowserPermissionsPlugin(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
   modifyAndTransformPluginEnv(config)
   on('before:browser:launch', onBeforeBrowserLaunch(config))
   return config

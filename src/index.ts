@@ -1,6 +1,7 @@
 import { PLUGIN_ENV_VAR } from './constants'
 import { BrowserPermissions, PermissionState } from './types'
 import { toPermissionState } from './helpers'
+export { cypressBrowserPermissionsPlugin } from './plugin'
 
 type PermissionKey = keyof BrowserPermissions
 

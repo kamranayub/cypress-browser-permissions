@@ -37,13 +37,33 @@ yarn install cypress-browser-permissions --save-dev
 
 In `cypress/plugins/index.js`:
 
+**CommonJS**
+
 ```js
-import cypressBrowserPermissions from 'cypress-browser-permissions/plugin'
+const { cypressBrowserPermissionsPlugin } = require('cypress-browser-permissions')
 
 module.exports = (on, config) => {
   // The plugin may modify the Cypress config, so be sure
   // to return it
-  config = cypressBrowserPermissions(on, config)
+  config = cypressBrowserPermissionsPlugin(on, config)
+
+  //
+  // Any existing plugins you are using
+  //
+
+  return config
+}
+```
+
+**ES2015**
+
+```js
+import { cypressBrowserPermissionsPlugin } from 'cypress-browser-permissions'
+
+module.exports = (on, config) => {
+  // The plugin may modify the Cypress config, so be sure
+  // to return it
+  config = cypressBrowserPermissionsPlugin(on, config)
 
   //
   // Any existing plugins you are using
