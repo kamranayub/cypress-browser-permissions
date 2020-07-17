@@ -15,7 +15,7 @@
     "start": "npm link && nodemon",
     "semantic-release": "semantic-release",
     "docs": "typedoc",
-    "prepublish": "npx shx cp package.json dist/"
+    "prepublish": "npx copyfiles -s package.json dist"
   },
   "repository": {
     "type": "git",
