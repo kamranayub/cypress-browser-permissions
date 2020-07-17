@@ -22,9 +22,15 @@
     "url": "https://github.com/kamranayub/cypress-browser-permissions.git"
   },
   "keywords": [
-    "TypeScript",
-    "Package",
-    "Starter"
+    "cypress",
+    "cypress-plugin",
+    "browser",
+    "e2e",
+    "permissions",
+    "notifications",
+    "geolocation",
+    "camera",
+    "microphone"
   ],
   "author": {
     "name": "Kamran Ayub",
