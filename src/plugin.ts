@@ -32,6 +32,7 @@ export function onBeforeBrowserLaunch(config: Pick<Cypress.PluginConfigOptions, 
 
       if (path) {
         set(launchOptions, path, value)
+        console.info(`[browserPermissions] permission '${permission}' => '${PermissionState[value]}'`)
       }
     })
 

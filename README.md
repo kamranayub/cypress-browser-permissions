@@ -17,6 +17,8 @@ A Cypress plugin to manage browser launch permissions for various APIs such as N
 
 These APIs can be controlled using browser profile preferences which this plugin will generate and pass for you, as well as resetting them for each test run (otherwise they will be persisted).
 
+This enables you to effectively test permissions-based APIs in continuous integration environments and in headed browsers _without prompts._ :tada:
+
 ## Usage
 
 ### Install the package
@@ -88,8 +90,14 @@ In `cypress.json`, set the `env.browserPermissions` property with a map of permi
   "env": {
     "browserPermissions": {
       "notifications": "allow",
-      "geolocation": "block",
-      "images": "ask"
+      "geolocation": "allow",
+      "camera": "block",
+      "microphone": "block",
+      "images": "allow",
+      "javascript": "allow",
+      "popups": "ask",
+      "plugins": "ask",
+      "cookies": "allow"
     }
   }
 }
@@ -103,8 +111,14 @@ In `cypress.env.json`, it follows the same convention:
 {
   "browserPermissions": {
     "notifications": "allow",
-    "geolocation": "block",
-    "images": "ask"
+    "geolocation": "allow",
+    "camera": "block",
+    "microphone": "block",
+    "images": "allow",
+    "javascript": "allow",
+    "popups": "ask",
+    "plugins": "ask",
+    "cookies": "allow"
   }
 }
 ```
@@ -130,16 +144,17 @@ CYPRESS_browser_permissions_notifications=allow cypress run
 
 ### Supported Permissions
 
-These are the supported options of the plugin:
+These are the supported permission names of the plugin:
 
 #### Chrome / Edge (Chromium)
 
 - `notifications`
 - `geolocation`
-- `popups`
+- `camera`
+- `microphone`
 - `images`
+- `popups`
 - `javascript`
-- `media_stream`
 - `cookies`
 - `plugins`
 
@@ -148,8 +163,8 @@ These are the supported options of the plugin:
 - `notifications`
 - `geolocation`
 - `camera`
-- `images`
 - `microphone`
+- `images`
 
 ### Supported Values
 
@@ -190,6 +205,8 @@ describe('my site', () => {
 })
 ```
 
+Also see [cypress/integration/](cypress/integration) folder for e2e examples.
+
 ### Docs
 
 See [API docs](https://kamranicus.com/cypress-browser-permissions)
@@ -206,13 +223,17 @@ Cypress can pass [preferences](https://docs.cypress.io/api/plugins/browser-launc
 
 You can listen to the `before:browser:launch` event in your own Cypress application to add any additional preferences.
 
-### Chrome / Chromium Preferences
+### Chrome / Edge / Chromium Preferences
 
 Documented in [pref_names](https://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/pref_names.cc?view=markup), the permission-related preferences are grouped under `profile.managed_default_content_settings`.
+
+These modify the "managed" settings, such as when group policy is enforced. In the Chrome settings, there _is_ a way to add specific sites to allow / block lists, and this may be possible to do with the plugin if that is stored in the profile data structure.
 
 ### Firefox
 
 In `about:config` within Firefox, search for `permissions.default` to list permissions.
+
+Notably, Firefox does not have some permissions related to JavaScript, Cookies, Plugins, and Popups but those may be managed with other settings.
 
 ## Credits
 

@@ -12,7 +12,6 @@ export interface BrowserPermissions {
   popups: PermissionState
   images: PermissionState
   javascript: PermissionState
-  media_stream: PermissionState
   cookies: PermissionState
   plugins: PermissionState
 }

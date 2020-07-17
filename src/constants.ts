@@ -23,11 +23,9 @@ export const PERMISSIONS_PREF_NAME_BY_FAMILY: Record<
     cookies: 'cookies',
     javascript: 'javascript',
     plugins: 'plugins',
-    media_stream: 'media_stream',
+    camera: 'media_stream',
+    microphone: 'media_stream',
     popups: 'popups',
-
-    camera: undefined,
-    microphone: undefined,
   },
   firefox: {
     camera: 'camera',
@@ -39,7 +37,6 @@ export const PERMISSIONS_PREF_NAME_BY_FAMILY: Record<
     cookies: undefined,
     javascript: undefined,
     plugins: undefined,
-    media_stream: undefined,
     popups: undefined,
   },
 }
