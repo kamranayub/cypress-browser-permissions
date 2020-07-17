@@ -81,7 +81,7 @@ module.exports = (on, config) => {
 
 Setting permissions should work in Chromium (Google Chrome, Microsoft Edge Chromium) and Firefox. They won't take effect in other browser families.
 
-Permissions cam be set using [Cypress environment variables](https://docs.cypress.io/guides/guides/environment-variables.html). The plugin reads permissions from `Cypress.env.browserPermissions` and supports all the existing ways to set Cypress environment variables.
+Permissions can be set using [Cypress environment variables](https://docs.cypress.io/guides/guides/environment-variables.html). The plugin reads permissions from `Cypress.env.browserPermissions` and supports all the existing ways to set Cypress environment variables.
 
 ![Example of enabling permissions](https://user-images.githubusercontent.com/563819/87628826-63b13100-c6f7-11ea-956a-ca84a137d464.png)
 
@@ -213,7 +213,7 @@ Also see [cypress/integration/](cypress/integration) folder for e2e examples.
 
 ### Docs
 
-See [API docs](https://kamranicus.com/cypress-browser-permissions)
+See [API docs](https://kamranicus.com/cypress-browser-permissions/modules/_index_.html) for documented methods.
 
 ## Resetting Permissions
 
