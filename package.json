@@ -64,7 +64,7 @@
     "typescript": "3.9.3"
   },
   "files": [
-    "dist/**/*"
+    "**/*"
   ],
   "dependencies": {
     "lodash": "^4.17.19"
