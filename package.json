@@ -15,7 +15,7 @@
     "start": "npm link && nodemon",
     "semantic-release": "semantic-release",
     "docs": "typedoc",
-    "postinstall": "npx copyfiles -s package.json README.md CHANGELOG.md LICENSE dist/"
+    "prepare:ci": "npx copyfiles -s package.json README.md CHANGELOG.md LICENSE dist/"
   },
   "repository": {
     "type": "git",

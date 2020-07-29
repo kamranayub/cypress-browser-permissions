@@ -71,6 +71,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn
       - run: yarn build
+      - run: yarn prepare:ci
       - run: yarn semantic-release
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
