@@ -2,12 +2,9 @@ name: Tests
 
 on:
   push:
-    branches:
-      - "*"
-      - "!master"
+    branches: [master]
   pull_request:
-    branches:
-      - "*"
+    branches: [master]
 
 jobs:
   lint-and-test:
