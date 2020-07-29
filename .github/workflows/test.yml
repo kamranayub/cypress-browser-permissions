@@ -26,6 +26,7 @@ jobs:
   chrome:
     name: Chrome
     runs-on: ubuntu-16.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v1
@@ -46,6 +47,7 @@ jobs:
   edge:
     name: Edge
     runs-on: windows-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
@@ -66,6 +68,7 @@ jobs:
   firefox:
     name: Firefox
     runs-on: ubuntu-16.04
+    timeout-minutes: 10
     container:
       image: cypress/browsers:node12.14.1-chrome83-ff77
       options: --user 1001
