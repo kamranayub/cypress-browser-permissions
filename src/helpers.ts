@@ -42,17 +42,11 @@ export function getBrowserLaunchOptionsPermissionsPath(browserFamily: Cypress.Br
   const valuePath = PERMISSIONS_PREF_NAME_BY_FAMILY[browserFamily][permission]
 
   if (rootPath && containerPath && valuePath) {
-    return `${rootPath}${containerPath}.${valuePath}`
-  }
-  return undefined
-}
-
-export function getBrowserLaunchOptionsPermissionsContainerPath(browserFamily: Cypress.BrowserFamily) {
-  const rootPath = PREFERENCES_ROOT_PATH_BY_FAMILY[browserFamily]
-  const containerPath = PERMISSIONS_PREF_CONTAINER_BY_FAMILY[browserFamily]
-
-  if (rootPath && containerPath) {
-    return `${rootPath}${containerPath}`
+    if (browserFamily === 'firefox') {
+      return `${rootPath}.["${containerPath}.${valuePath}"]`
+    } else {
+      return `${rootPath}.${containerPath}.${valuePath}`
+    }
   }
   return undefined
 }

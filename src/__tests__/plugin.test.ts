@@ -1,7 +1,7 @@
 import { get, forOwn, set } from 'lodash'
 import { onBeforeBrowserLaunch, modifyAndTransformPluginEnv } from '../plugin'
 import { PermissionState } from '../types'
-import { getBrowserLaunchOptionsPermissionsPath, getBrowserLaunchOptionsPermissionsContainerPath } from '../helpers'
+import { getBrowserLaunchOptionsPermissionsPath } from '../helpers'
 import { PREFERENCES_ROOT_PATH_BY_FAMILY } from '../constants'
 
 const EMPTY_LAUNCH_OPTIONS = {} as Cypress.BrowserLaunchOptions
@@ -160,14 +160,12 @@ describe('plugin', () => {
 
           const initialLaunchOptions = {} as Cypress.BrowserLaunchOptions
           const geolocationPath = getBrowserLaunchOptionsPermissionsPath(browserFamily, 'geolocation')
-          const containerPath = getBrowserLaunchOptionsPermissionsContainerPath(browserFamily)
 
           set(initialLaunchOptions, geolocationPath, PermissionState.allow)
 
           const launchOptions = handle({ family: browserFamily }, initialLaunchOptions)
 
           expect(get(launchOptions, geolocationPath)).toBeUndefined()
-          expect(get(launchOptions, containerPath)).toBeUndefined()
         })
       })
     })

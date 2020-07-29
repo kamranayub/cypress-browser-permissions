@@ -3,8 +3,8 @@ import { BrowserPermissions } from './types'
 export const PLUGIN_ENV_VAR = 'browserPermissions'
 
 export const PREFERENCES_ROOT_PATH_BY_FAMILY: Record<Cypress.BrowserFamily, string> = {
-  chromium: 'preferences.default.',
-  firefox: 'preferences.',
+  chromium: 'preferences.default',
+  firefox: 'preferences',
 }
 
 export const PERMISSIONS_PREF_CONTAINER_BY_FAMILY: Record<Cypress.BrowserFamily, string> = {

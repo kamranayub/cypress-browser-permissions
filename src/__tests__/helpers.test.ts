@@ -22,7 +22,7 @@ describe('helpers', () => {
 
     it('should set Firefox notifications preferences path', () => {
       expect(getBrowserLaunchOptionsPermissionsPath('firefox', 'notifications')).toBe(
-        'preferences.permissions.default.desktop-notification',
+        'preferences.["permissions.default.desktop-notification"]',
       )
     })
   })

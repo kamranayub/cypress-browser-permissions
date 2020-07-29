@@ -1,20 +1,31 @@
 import { forOwn, set, unset, keys, pickBy, camelCase, mapKeys } from 'lodash'
 import { PermissionState } from './types'
-import {
-  getBrowserPermissionsFromEnv,
-  getBrowserLaunchOptionsPermissionsPath,
-  getBrowserLaunchOptionsPermissionsContainerPath,
-} from './helpers'
-import { PLUGIN_ENV_VAR } from './constants'
+import { getBrowserPermissionsFromEnv, getBrowserLaunchOptionsPermissionsPath } from './helpers'
+import { PLUGIN_ENV_VAR, PREFERENCES_ROOT_PATH_BY_FAMILY, PERMISSIONS_PREF_CONTAINER_BY_FAMILY } from './constants'
 
 function resetBrowserPermissions(
   browser: Pick<Cypress.Browser, 'family'>,
   launchOptions: Cypress.BrowserLaunchOptions,
 ) {
-  const path = getBrowserLaunchOptionsPermissionsContainerPath(browser.family)
+  const rootPath = PREFERENCES_ROOT_PATH_BY_FAMILY[browser.family]
 
-  if (path) {
-    unset(launchOptions, path)
+  switch (browser.family) {
+    case 'chromium': {
+      const containerPath = PERMISSIONS_PREF_CONTAINER_BY_FAMILY.chromium
+
+      unset(launchOptions, `${rootPath}.${containerPath}`)
+      break
+    }
+    case 'firefox': {
+      const containerPath = PERMISSIONS_PREF_CONTAINER_BY_FAMILY.firefox
+
+      Object.keys(launchOptions[rootPath])
+        .filter((pref) => pref.startsWith(containerPath))
+        .forEach((pref) => {
+          delete launchOptions[rootPath][pref]
+        })
+      break
+    }
   }
 }
 
@@ -26,12 +37,13 @@ export function onBeforeBrowserLaunch(config: Pick<Cypress.PluginConfigOptions, 
     // By default, unset preferences Cypress doesn't set automatically
     resetBrowserPermissions(browser, launchOptions)
 
-    // Set Chrome launchOptions preferences
+    // Set launchOptions preferences
     forOwn(requestedPermissions, (value: PermissionState, permission: string) => {
       const path = getBrowserLaunchOptionsPermissionsPath(browser.family, permission)
 
       if (path) {
         set(launchOptions, path, value)
+
         console.info(`[browserPermissions] permission '${permission}' => '${PermissionState[value]}'`)
       }
     })

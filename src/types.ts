@@ -4,6 +4,8 @@ export enum PermissionState {
   block = 2,
 }
 
+export type BrowserPermissionName = keyof BrowserPermissions
+
 export interface BrowserPermissions {
   camera: PermissionState
   microphone: PermissionState
