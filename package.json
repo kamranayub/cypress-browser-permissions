@@ -61,6 +61,7 @@
     "eslint": "7.1.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-cypress": "2.11.1",
     "husky": "4.2.5",
     "jest": "26.0.1",
     "lint-staged": "^10.2.11",
@@ -81,7 +82,7 @@
     "cypress": "4.x"
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": "eslint --fix && npm test",
+    "*.{ts,tsx,js}": ["eslint --fix", "npm test -- --coverage=false"],
     "README.md": "doctoc README.md"
   }
 }
