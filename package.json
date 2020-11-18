@@ -67,7 +67,7 @@
     "lint-staged": "^10.2.11",
     "nodemon": "2.0.4",
     "prettier": "2.0.5",
-    "semantic-release": "17.1.1",
+    "semantic-release": "17.2.3",
     "ts-jest": "26.0.0",
     "typedoc": "^0.17.8",
     "typescript": "3.9.3"
