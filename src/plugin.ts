@@ -13,6 +13,9 @@ function resetBrowserPermissions(
     case 'chromium': {
       const containerPath = PERMISSIONS_PREF_CONTAINER_BY_FAMILY.chromium
 
+      // Debug for Chromium:
+      // console.log(launchOptions.preferences.default.profile)
+
       unset(launchOptions, `${rootPath}.${containerPath}`)
       break
     }
