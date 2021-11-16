@@ -13,11 +13,7 @@ Stored in `preferences` object viewable at:
 
 #### `managed_content_setting_values`
 
-Stores "managed" permissions. When a Chrome profile is managed by an organization, settings will take effect here.
-
-#### `default_content_setting_values`
-
-Stores "default" permissions. When a Chromium profile is "unmanaged", settings will take effect here.
+Stores "managed" permissions. Settings specified here will take effect when the profile is launched.
 
 ### Firefox: 
 
