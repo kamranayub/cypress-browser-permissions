@@ -31,7 +31,6 @@
   "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*", "coverage"],
   "typedocOptions": {
-    "mode": "modules",
     "out": "docs"
   }
 }

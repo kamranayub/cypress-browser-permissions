@@ -14,7 +14,7 @@
     "watch": "tsc -w",
     "start": "npm link && nodemon",
     "semantic-release": "semantic-release",
-    "docs": "typedoc",
+    "docs": "typedoc src/index.ts",
     "prepare:ci": "npx copyfiles -s package.json README.md CHANGELOG.md LICENSE dist/"
   },
   "repository": {
