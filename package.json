@@ -50,36 +50,36 @@
   "devDependencies": {
     "@commitlint/cli": "14.1.0",
     "@commitlint/config-conventional": "14.1.0",
-    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/changelog": "6.0.1",
     "@types/jest": "27.0.2",
-    "@types/lodash": "^4.14.157",
+    "@types/lodash": "4.14.157",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
-    "cypress": "^9.0.0",
-    "doctoc": "^2.1.0",
+    "cypress": "9.0.0",
+    "doctoc": "2.1.0",
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-prettier": "4.0.0",
     "husky": "4.2.5",
     "jest": "27.3.1",
-    "lint-staged": "^10.2.11",
+    "lint-staged": "10.2.11",
     "nodemon": "2.0.15",
     "prettier": "2.4.1",
     "semantic-release": "18.0.0",
     "ts-jest": "27.0.7",
-    "typedoc": "^0.22.9",
+    "typedoc": "0.22.9",
     "typescript": "4.4.4"
   },
   "files": [
     "**/*"
   ],
   "dependencies": {
-    "lodash": "^4.17.19"
+    "lodash": "4.17.21"
   },
   "peerDependencies": {
-    "cypress": "4.x"
+    "cypress": ">= 4"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
