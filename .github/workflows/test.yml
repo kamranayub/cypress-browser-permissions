@@ -25,7 +25,7 @@ jobs:
 
   chrome:
     name: Chrome
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
@@ -67,7 +67,7 @@ jobs:
 
   firefox:
     name: Firefox
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     container:
       image: cypress/browsers:node16.5.0-chrome94-ff93
