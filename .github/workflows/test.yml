@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-and-test:
-    name: Node 12
+    name: Node 16
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 16
       - run: yarn
       - run: yarn lint
       - run: yarn build
@@ -29,7 +29,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v1
+      - uses: cypress-io/github-action@2.11.7
         with:
           browser: chrome
           build: yarn build
@@ -50,7 +50,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v2
+      - uses: cypress-io/github-action@2.11.7
         with:
           browser: edge
           build: yarn build
@@ -70,11 +70,11 @@ jobs:
     runs-on: ubuntu-16.04
     timeout-minutes: 10
     container:
-      image: cypress/browsers:node12.14.1-chrome83-ff77
+      image: cypress/browsers:node16.5.0-chrome94-ff93
       options: --user 1001
     steps:
       - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v2
+      - uses: cypress-io/github-action@2.11.7
         with:
           browser: firefox
           build: yarn build
