@@ -67,7 +67,7 @@ npm i cypress-browser-permissions --save-dev
 #### yarn
 
 ```bash
-yarn install cypress-browser-permissions --save-dev
+yarn add cypress-browser-permissions --save-dev
 ```
 
 ### Import and initialize the plugin
